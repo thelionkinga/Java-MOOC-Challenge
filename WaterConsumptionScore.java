@@ -12,28 +12,30 @@ public class WaterConsumptionScore {
             System.out.print("How many times do you run your dishwasher per week? ");
             int dishwasherFrequency = input.nextInt();
 
-            if (dishwasherFrequency > 9) {
-                score += 3;
-            } else if (dishwasherFrequency >= 4 && dishwasherFrequency <= 9) {
-                score += 2;
-            } else if (dishwasherFrequency >= 1 && dishwasherFrequency <= 3) {
-                score += 1;
-            }
+            score += calculateWaterConsumptionScore(dishwasherFrequency);
 
             System.out.print("How many times do you run your washing machine per week? ");
             int washingMachineFrequency = input.nextInt();
 
-            if (washingMachineFrequency > 9) {
-                score += 3;
-            } else if (washingMachineFrequency >= 4 && washingMachineFrequency <= 9) {
-                score += 2;
-            } else if (washingMachineFrequency >= 1 && washingMachineFrequency <= 3) {
-                score += 1;
-            }
+            score += calculateWaterConsumptionScore(washingMachineFrequency);
         } else {
             System.out.println("You don't have a dishwasher, so no points added.");
         }
 
         System.out.println("Your water consumption score is: " + score);
+    }
+
+    public static int calculateWaterConsumptionScore(int frequency) {
+        int points = 0;
+
+        if (frequency > 9) {
+            points += 3;
+        } else if (frequency >= 4 && frequency <= 9) {
+            points += 2;
+        } else if (frequency >= 1 && frequency <= 3) {
+            points += 1;
+        }
+
+        return points;
     }
 }
